@@ -1,6 +1,7 @@
 // app.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MangaModule } from './manga/manga.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -15,6 +16,7 @@ dotenv.config();
       synchronize: true,
       autoLoadEntities: true,
     }),
+    MangaModule,
   ],
   controllers: [],
   providers: [],

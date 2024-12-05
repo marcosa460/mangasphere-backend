@@ -1,4 +1,4 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Injectable, Logger, NestMiddleware } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 import { Request, Response, NextFunction } from 'express';
 
@@ -18,6 +18,7 @@ export class FirebaseAuthMiddleware implements NestMiddleware {
       req['user'] = decodedToken;
       next();
     } catch (error) {
+      Logger.error(error);
       return res.status(401).json({ message: 'Invalid or expired token' });
     }
   }
